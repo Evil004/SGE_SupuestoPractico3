@@ -1,0 +1,125 @@
+<odoo>
+  <data>
+
+
+    <record model="ir.ui.view" id="fct_ies.alumno_form">
+      <field name="name">fct_ies.alumno.form</field>
+      <field name="model">fct_ies.alumno</field>
+      <field name="arch" type="xml">
+        <form string="Alumno">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="apellidos" />
+              <field name="fecha_nacimiento" />
+              <field name="curso_academico" />
+              <field name="correo_electronico" />
+              <field name="telefono" />
+              <field name="ciclo_formativo" />
+              <field name="periodo_practica" />
+              <field name="nota_media" />
+              <field name="nota_media_texto" />
+              <field name="empresa" />
+
+            </group>
+          </sheet>
+
+        </form>
+
+
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="fct_ies.alumno_tree">
+      <field name="name">fct_ies.alumno.tree</field>
+      <field name="model">fct_ies.alumno</field>
+      <field name="arch" type="xml">
+        <tree string="Alumnos">
+          <field name="name" />
+          <field name="apellidos" />
+          <field name="curso_academico" />
+          <field name="periodo_practica" />
+        </tree>
+      </field>
+    </record>
+
+    <!--Search
+    view-->
+    <record model="ir.ui.view" id="fct_ies.alumno_search">
+      <field name="name">fct_ies.alumno.search</field>
+      <field name="model">fct_ies.alumno</field>
+      <field name="arch" type="xml">
+        <search string="Alumnos">
+          <field name="apellidos" />
+          <field name="empresa" />
+          <field name="ciclo_formativo" />
+          <field name="periodo_practica" />
+          <filter name="Nota media mayor a 8" domain="[('nota_media', '&gt;Ejercicio 1', 8)]" />
+        </search>
+      </field>
+
+    </record>
+
+    <record model="ir.ui.view" id="fct_ies.empresa_form">
+      <field name="name">fct_ies.empresa.form</field>
+      <field name="model">fct_ies.empresa</field>
+      <field name="arch" type="xml">
+        <form string="Empresa">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="persona_contacto" />
+              <field name="telefono_contacto" />
+              <field name="correo_electronico" />
+              <field name="direccion" />
+              <field name="alumnos" />
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="fct_ies.empresa_tree">
+      <field name="name">fct_ies.empresa.tree</field>
+      <field name="model">fct_ies.empresa</field>
+      <field name="arch" type="xml">
+        <tree string="Empresas">
+          <field name="name" />
+          <field name="persona_contacto" />
+          <field name="telefono_contacto" />
+          <field name="correo_electronico" />
+          <field name="direccion" />
+
+        </tree>
+
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="fct_ies.alumno_action">
+      <field name="name">Alumnos</field>
+      <field name="res_model">fct_ies.alumno</field>
+      <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="fct_ies.empresa_action">
+      <field name="name">Empresas</field>
+      <field name="res_model">fct_ies.empresa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="fct_ies.menu_root" name="FCT" />
+
+    <menuitem id="fct_ies.menu_alumnos"
+      name="Alumnos"
+      parent="fct_ies.menu_root"
+      action="fct_ies.alumno_action" />
+
+    <menuitem id="fct_ies.menu_empresas"
+      name="Empresas"
+      parent="fct_ies.menu_root"
+      action="fct_ies.empresa_action" />
+
+  </data>
+</odoo>
